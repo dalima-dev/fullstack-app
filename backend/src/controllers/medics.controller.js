@@ -1,4 +1,4 @@
-const medicsService = require('../services/medics.service');
+const medicsService = require('../services/medics.service').default;
 
 const findMedicsController = (req, res) => {
   const allMedics = medicsService.findMedicsService();
