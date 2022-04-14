@@ -18,7 +18,7 @@ const createMedicController = (req, res) => {
 };
 
 const updateMedicController = (req, res) => {
-  const idParam = req.params.id;
+  const idParam = Number(req.params.id);
   const editedMedic = req.body;
   const updatedMedic = medicsService.updateMedicService(idParam, editedMedic);
   res.send(updatedMedic);
