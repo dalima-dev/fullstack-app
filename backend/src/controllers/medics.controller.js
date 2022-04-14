@@ -27,6 +27,7 @@ const updateMedicController = (req, res) => {
 const deleteMedicController = (req, res) => {
   const idParam = Number(req.params.id);
   medicsService.deleteMedicService(idParam);
+  res.send({ message: 'Medic deleted with success!' });
 };
 
 module.exports = {
