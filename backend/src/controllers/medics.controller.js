@@ -24,7 +24,10 @@ const updateMedicController = (req, res) => {
   res.send(updatedMedic);
 };
 
-const deleteMedicController = (req, res) => {};
+const deleteMedicController = (req, res) => {
+  const idParam = Number(req.params.id);
+  medicsService.deleteMedicService(idParam);
+};
 
 module.exports = {
   findMedicsController,
