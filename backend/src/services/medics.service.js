@@ -1,19 +1,10 @@
-function Medic(id, name, CRM, landline, phoneNumber, CEP, specialties) {
-  this.id = id;
-  this.name = name;
-  this.CRM = CRM;
-  this.landline = landline;
-  this.phoneNumber = phoneNumber;
-  this.CEP = CEP;
-  this.specialties = specialties;
-}
-
 const medics = [
   {
     id: 1,
     name: 'Roberta Almeida Silva',
     CRM: 70001,
     landline: 33028647,
+    phoneNumber: 998276543,
     CEP: 50050590,
     specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
@@ -22,6 +13,7 @@ const medics = [
     name: 'Carlos Gustavo Pereira',
     CRM: 70001,
     landline: 33028647,
+    phoneNumber: 998276543,
     CEP: 50050590,
     specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
@@ -30,6 +22,7 @@ const medics = [
     name: 'Robert Good Boy',
     CRM: 70001,
     landline: 33028647,
+    phoneNumber: 998276543,
     CEP: 50050590,
     specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
@@ -38,6 +31,7 @@ const medics = [
     name: 'Robert Plank',
     CRM: 70001,
     landline: 33028647,
+    phoneNumber: 998276543,
     CEP: 50050590,
     specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
