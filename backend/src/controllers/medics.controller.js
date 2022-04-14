@@ -11,7 +11,25 @@ const findMedicByIdController = (req, res) => {
   res.send(chosenMedic);
 };
 
+const createMedicController = (req, res) => {
+  const medic = req.body;
+  const newMedic = medicsService.createMedicService(medic);
+  res.send(newMedic);
+};
+
+const updateMedicController = (req, res) => {
+  const idParam = req.params.id;
+  const editedMedic = req.body;
+  const updatedMedic = medicsService.updateMedicService(idParam, editedMedic);
+  res.send(updatedMedic);
+};
+
+const deleteMedicController = (req, res) => {};
+
 module.exports = {
   findMedicsController,
   findMedicByIdController,
+  createMedicController,
+  updateMedicController,
+  deleteMedicController,
 };

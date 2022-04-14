@@ -15,7 +15,7 @@ const medics = [
     CRM: 70001,
     landline: 33028647,
     CEP: 50050590,
-    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca']
+    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const medics = [
     CRM: 70001,
     landline: 33028647,
     CEP: 50050590,
-    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca']
+    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const medics = [
     CRM: 70001,
     landline: 33028647,
     CEP: 50050590,
-    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca']
+    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
   {
     id: 4,
@@ -39,14 +39,20 @@ const medics = [
     CRM: 70001,
     landline: 33028647,
     CEP: 50050590,
-    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca']
+    specialties: ['Cirurgia cabeça e pescoço', 'Cardiologia clínca'],
   },
 ];
 
 const findMedicsService = () => medics;
 const findMedicByIdService = (id) => medics.find((item) => item.id == id);
+const createMedicService = () => {};
+const updateMedicService = () => {}
+const deleteMedicService = () => {};
 
 module.exports = {
   findMedicsService,
   findMedicByIdService,
+  createMedicService,
+  updateMedicService,
+  deleteMedicService,
 };
