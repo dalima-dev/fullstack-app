@@ -5,12 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MedicBank</title>
-    <link rel="stylesheet" href="./assets/style.css" />
+    <link href="/assets/dist/output.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <header>
-      <h1>Welcome to MedicBank!</h1>
-      <button class="btn">Add medic</button>
+  <body class="font-['Roboto'] text-white">
+    <header class="m-2 p-5 flex justify-around bg-sky-500 rounded">
+      <h1 class="text-3xl font-bold ">
+        Welcome to MedicBank!
+      </h1>
+      <button class="p-2 border rounded bg-sky-700">Add medic</button>
     </header>
 
     <main>
@@ -18,18 +26,13 @@
 
       <section>
         <div class="" href="/detalhes/">
-          <img
-            src="./assets/img/padrao.jpg"
-            alt="Image not loaded"
-            onError="this.onerror=null; this.src='./assets/img/padrao.png';"
-          />
           <p>Nome</p>
           <p>CRM</p>
         </div>
       </section>
     </main>
 
-    <footer>@ MedicBank. All rights reserved.</footer>
+    <footer class="text-center">@ MedicBank. All rights reserved.</footer>
 
     <script src="./assets/script.js"></script>
   </body>
