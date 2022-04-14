@@ -19,7 +19,7 @@ const medics = [
   },
   {
     id: 2,
-    name: 'Roberta Almeida Silva',
+    name: 'Carlos Gustavo Pereira',
     CRM: 70001,
     landline: 33028647,
     CEP: 50050590,
@@ -27,7 +27,7 @@ const medics = [
   },
   {
     id: 3,
-    name: 'Roberta Almeida Silva',
+    name: 'Robert Good Boy',
     CRM: 70001,
     landline: 33028647,
     CEP: 50050590,
@@ -35,7 +35,7 @@ const medics = [
   },
   {
     id: 4,
-    name: 'Roberta Almeida Silva',
+    name: 'Robert Plank',
     CRM: 70001,
     landline: 33028647,
     CEP: 50050590,
@@ -61,8 +61,8 @@ const updateMedicService = (id, editedMedic) => {
 };
 
 const deleteMedicService = (id) => {
-  const medicIndex = medics.findIndex(medic.id == id);
-  return medics.splice(medicIndex, 1);
+  const medicIndex = medics.findIndex((medic) => medic.id == id);
+  return medics.splice(medicIndex, 1)[0]; //This returns the removed element.
 };
 
 module.exports = {
