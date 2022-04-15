@@ -26,15 +26,15 @@
     </header>
 
     <main class="container mx-auto p-2">
-      <h2 class="text-2xl text-center">Search medic:</h2>
+      <h2 class="text-3xl text-center">Search medic:</h2>
       <div class="flex flex-col items-center">
-        <div class="flex gap-4">
+        <div class="flex gap-4 border-2">
           <input
             type="number"
             id="idPaleta"
-            placeholder="Digite o ID da paleta e clique em 'Escolher'"
+            placeholder="Type CRM here:"
           />
-          <button id="idPaletaButton" onclick="findByIdPaletas()">
+          <button id="idPaletaButton" onclick="findByIdMedics()" class="bg-purple-700 p-2 rounded">
             ESCOLHER
           </button>
         </div>
