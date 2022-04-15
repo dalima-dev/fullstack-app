@@ -17,6 +17,7 @@ async function findAllMedics() {
           />
           <div>
             <p>Nome:</p>
+            <p>ID: ${item.id}</p>
             <p>${item.name}</p>
             <p>CRM:</p>
             <p>${item.CRM}</p>
@@ -26,5 +27,7 @@ async function findAllMedics() {
     );
   });
 }
+
+async function findMedicById() {}
 
 findAllMedics();

@@ -26,18 +26,18 @@
     </header>
 
     <main class="container mx-auto p-2">
-      <h2 class="py-2 text-3xl text-center text-blue-500">Search medic:</h2>
+      <h2 class="py-2 text-3xl text-center text-blue-500">Search medic by ID:</h2>
       <section class="flex flex-col items-center">
         <div class="flex gap-4">
           <input
             type="number"
-            id="crm"
-            placeholder="Type CRM here:"
+            id="idMedic"
+            placeholder="Type an ID here:"
             class="border-2 border-slate-700 p-1"
           />
           <button
-            id="crmMedicButton"
-            onclick="findByCrmMedics()"
+            id="idMedicButton"
+            onclick="findMedicById()"
             class="bg-purple-700 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
           >
             ENTER
