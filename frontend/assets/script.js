@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:3000/medic';
+const baseURL = 'http://192.168.0.6:3000/medic'; //You can access localhost server from wifi on your mobile device.
 
 async function findAllMedics() {
   const response = await fetch(`${baseURL}/find-medics`);
