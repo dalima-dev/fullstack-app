@@ -49,6 +49,16 @@ async function findMedicById() {
   `;
 }
 
-function closeModalRegister(){}
+function closeModalRegister() {}
+
+function addSpecialtiesInputs() {
+  const specialtiesNumber = document.querySelector('#specialtiesNumber').value;
+  const specialtiesInputsDiv = document.querySelector('#specialtiesInputs');
+
+  specialtiesInputsDiv.innerHTML = '';
+
+  for (let i = 0; i < specialtiesNumber; i++)
+    specialtiesInputsDiv.innerHTML += `<h1>input</h1>`;
+}
 
 findAllMedics();

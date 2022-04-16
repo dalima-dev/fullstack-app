@@ -49,52 +49,64 @@
       </section>
 
       <section class="max-w-xs sm:max-w-lg container mx-auto" id="overlay">
-          <div class="flex flex-row justify-between items-center px-4 py-1 rounded-t-md bg-blue-500">
-            <h2 class="text-lg">Register medic:</h2>
-            <a onclick="closeModalRegister()" class="text-red-500 text-xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer">x</a>
-          </div>
+        <div
+          class="flex flex-row justify-between items-center px-4 py-1 rounded-t-md bg-blue-500"
+        >
+          <h2 class="text-lg">Register medic:</h2>
+          <a
+            onclick="closeModalRegister()"
+            class="text-red-500 text-xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
+            >x</a
+          >
+        </div>
 
-          <div class="p-2 bg-blue-500 rounded-b-md">
-            <div class="flex flex-col ">
+        <div class="p-2 bg-blue-500 rounded-b-md">
+          <div class="flex flex-col">
+            <input
+              class="p-1 m-1 text-black border-2 border-slate-600"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+            />
+            <input
+              class="p-1 m-1 text-black border-2 border-slate-600"
+              type="number"
+              name="crm"
+              id="crm"
+              placeholder="CRM"
+            />
+            <input
+              class="p-1 m-1 text-black border-2 border-slate-600"
+              type="number"
+              name="landline"
+              id="landline"
+              placeholder="Landline"
+            />
+            <input
+              class="p-1 m-1 text-black border-2 border-slate-600"
+              type="number"
+              name="cep"
+              id="cep"
+              placeholder="CEP"
+            />
+            <div class="py-1 flex justify-center gap-2">
+              <label type="number">Number of specialties:</label>
               <input
-                class="p-1 m-1 text-black border-2 border-slate-600"
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Name"
+                class="text-black w-10 border-2 border-slate-600 rounded"
+                type="number"
+                id="specialtiesNumber"
+                name="specialtiesNumber"
+                min="2"
+                onchange="addSpecialtiesInputs()"
               />
-              <input
-                class="p-1 m-1 text-black border-2 border-slate-600"
-                type="number"
-                name="crm"
-                id="crm"
-                placeholder="CRM"
-              />
-              <input
-                class="p-1 m-1 text-black border-2 border-slate-600"
-                type="number"
-                name="landline"
-                id="landline"
-                placeholder="Landline"
-              >
-              <input
-                class="p-1 m-1 text-black border-2 border-slate-600"
-                type="number"
-                name="cep"
-                id="cep"
-                placeholder="CEP"
-              />
-              <label
-                class="p-1 m-1"
-                type="number"
-                id="specialtyNumber"
-              >Number of specialties</label>
-
-              <div>Inputs for typing specialties here</div>
-
-              <button onclick="createMedic()">Cadastrar</button>
             </div>
+
+            <div id="specialtiesInputs"></div>
+
+            <button onclick="createMedic()">Cadastrar</button>
           </div>
+        </div>
       </section>
 
       <section
