@@ -1,7 +1,8 @@
 const address = '192.168.0.6'; //You may change this to localhost or 127.0.0.1 if you're not using a wi-fi connection.
 const baseURL = `http://${address}:3000/medic`;
 
-async function findAllMedics() {
+(async () => {
+  //Here we push our medic list data into HTML.
   const response = await fetch(`${baseURL}/find-medics`);
   const medics = await response.json();
 
@@ -24,11 +25,13 @@ async function findAllMedics() {
        `,
     );
   });
-}
+})();
 
 async function findMedicById() {
   const idMedic = document.querySelector('#idMedic').value;
-  const response = await fetch(`${baseURL}/find-medics/${idMedic >= 1 ? idMedic : 1 }`);
+  const response = await fetch(
+    `${baseURL}/find-medics/${idMedic >= 1 ? idMedic : 1}`,
+  );
   const medic = await response.json();
   const chosenMedicDiv = document.querySelector('#chosenMedic');
 
@@ -82,5 +85,3 @@ function addSpecialtiesInputs() {
     />
     `;
 }
-
-findAllMedics();
