@@ -34,7 +34,7 @@ async function findMedicById() {
   const chosenMedicDiv = document.querySelector('#chosenMedic');
 
   chosenMedicDiv.innerHTML = `
-  <div class="flex flex-row gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 cursor-pointer">
+  <div class="flex flex-col gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 cursor-pointer">
     <img
         src="./assets/foto.jpg"
         alt="image not loaded"
@@ -48,5 +48,7 @@ async function findMedicById() {
   </div>
   `;
 }
+
+function closeModalRegister(){}
 
 findAllMedics();
