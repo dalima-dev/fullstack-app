@@ -16,11 +16,9 @@ async function findAllMedics() {
             class="w-20 md:w-auto rounded"
           />
           <div>
-            <p>Nome:</p>
             <p>ID: ${item.id}</p>
+            <p>Nome:</p>
             <p>${item.name}</p>
-            <p>CRM:</p>
-            <p>${item.CRM}</p>
           </div>
         </div>
        `,
@@ -28,6 +26,28 @@ async function findAllMedics() {
   });
 }
 
-async function findMedicById() {}
+async function findMedicById() {
+  const id = document.querySelector('#idMedic').value;
+  const response = await fetch(`${baseURL}/find-medics/${id}`);
+
+  const medic = await response.json();
+
+  const chosenMedicDiv = document.querySelector('#chosenMedic');
+
+  chosenMedicDiv.innerHTML = `
+  <div class="flex flex-row gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
+          <img
+            src="./assets/foto.jpg"
+            alt="image not loaded"
+            class="w-20 md:w-auto rounded"
+          />
+          <div>
+            <p>ID: ${item.id}</p>
+            <p>Nome:</p>
+            <p>${item.name}</p>
+          </div>
+        </div>
+  `;
+}
 
 findAllMedics();
