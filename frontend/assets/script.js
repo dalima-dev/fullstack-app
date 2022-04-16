@@ -27,8 +27,8 @@ async function findAllMedics() {
 }
 
 async function findMedicById() {
-  const id = document.querySelector('#idMedic').value;
-  const response = await fetch(`${baseURL}/find-medics/${id}`);
+  const idMedic = document.querySelector('#idMedic').value;
+  const response = await fetch(`${baseURL}/find-medics/${idMedic >= 1 ? idMedic : 1 }`);
   const medic = await response.json();
   const chosenMedicDiv = document.querySelector('#chosenMedic');
 
