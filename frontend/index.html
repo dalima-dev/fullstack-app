@@ -26,7 +26,9 @@
     </header>
 
     <main class="container mx-auto p-2">
-      <h2 class="py-2 text-3xl text-center text-blue-500">Search medic by ID:</h2>
+      <h2 class="py-2 text-3xl text-center text-blue-500">
+        Search medic by ID:
+      </h2>
       <section class="flex flex-col items-center gap-4 mb-4">
         <div class="flex gap-4">
           <input
@@ -44,6 +46,46 @@
           </button>
         </div>
         <div id="chosenMedic"></div>
+      </section>
+
+      <section class="container mx-auto" id="overlay">
+        <div class="border-2">
+          <div class="modal-header">
+            <h2>Add medic:</h2>
+            <a onclick="closeModalRegister()" class="close-modal">x</a>
+          </div>
+
+          <div class="p-2 border-2">
+            <div class="flex flex-col border-2">
+              <input
+                type="text"
+                name="sabor"
+                id="sabor"
+                placeholder="Sabor da Paleta"
+              />
+              <input
+                type="number"
+                name="preco"
+                id="preco"
+                placeholder="Preço da Paleta"
+              />
+              <textarea
+                type="text"
+                name="descricao"
+                id="descricao"
+                placeholder="Descrição da Paleta"
+                rows="5"
+              ></textarea>
+              <input
+                type="text"
+                name="foto"
+                id="foto"
+                placeholder="Link da Foto da Paleta"
+              />
+              <button onclick="createPaleta()">Cadastrar</button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section
