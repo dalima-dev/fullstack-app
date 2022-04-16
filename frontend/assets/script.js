@@ -50,7 +50,13 @@ async function findMedicById() {
   `;
 }
 
-function closeModalRegister() {}
+function closeModalRegister() {
+  document.querySelector('#overlay').style.display = "none"
+}
+
+function openModalRegister() {
+  document.querySelector('#overlay').style.display = "block"
+}
 
 function addSpecialtiesInputs() {
   const specialtiesNumber = document.querySelector('#specialtiesNumber').value;
