@@ -30,13 +30,14 @@
       <h2 class="py-2 text-3xl text-center text-blue-500">
         Search medic by ID:
       </h2>
-      <section class="flex flex-col items-center gap-4 mb-4">
+      <section id="searchById" class="flex flex-col items-center gap-4 mb-4">
         <div class="flex gap-4">
           <input
             type="number"
             id="idMedic"
             placeholder="Type an ID here:"
             class="border-2 border-slate-700 p-1 text-black"
+            min="1"
           />
           <button
             id="idMedicButton"

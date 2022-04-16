@@ -9,11 +9,11 @@ async function findAllMedics() {
     document.querySelector('#medicList').insertAdjacentHTML(
       'beforeend',
       `
-       <div class="flex flex-col gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
+       <div class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
           <img
             src="./assets/foto.jpg"
             alt="image not loaded"
-            class="w-16 md:w-auto rounded"
+            class="rounded"
           />
           <div>
             <p>ID: ${item.id}</p>
@@ -29,12 +29,11 @@ async function findAllMedics() {
 async function findMedicById() {
   const id = document.querySelector('#idMedic').value;
   const response = await fetch(`${baseURL}/find-medics/${id}`);
-
   const medic = await response.json();
   const chosenMedicDiv = document.querySelector('#chosenMedic');
 
   chosenMedicDiv.innerHTML = `
-  <div class="flex flex-row items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
+  <div class="flex flex-row items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 cursor-pointer">
       <img
         src="./assets/foto.jpg"
         alt="image not loaded"
@@ -51,17 +50,23 @@ async function findMedicById() {
 }
 
 function closeModalRegister() {
-  document.querySelector('#overlay').style.display = "none"
+  document.querySelector('#overlay').style.display = 'none';
+  document.querySelector('#medicList').style.filter = 'blur(0)';
+  document.querySelector('#searchById').style.filter = 'blur(0)';
+  document.querySelector('h2').style.filter = 'blur(0)';
 }
 
 function openModalRegister() {
-  document.querySelector('#overlay').style.display = "block"
+  document.querySelector('#overlay').style.display = 'block';
+  document.querySelector('#medicList').style.filter = 'blur(24px)';
+  document.querySelector('#searchById').style.filter = 'blur(24px)';
+  document.querySelector('h2').style.filter = 'blur(24px)';
 }
 
 function addSpecialtiesInputs() {
   const specialtiesNumber = document.querySelector('#specialtiesNumber').value;
 
-  if (specialtiesNumber > 12) return; //Maximum number of 12 specialties. 
+  if (specialtiesNumber > 12) return; //Maximum number of 12 specialties.
 
   const specialtiesInputsDiv = document.querySelector('#specialtiesInputs');
   specialtiesInputsDiv.innerHTML = '';
