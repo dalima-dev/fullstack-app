@@ -58,7 +58,14 @@ function addSpecialtiesInputs() {
   specialtiesInputsDiv.innerHTML = '';
 
   for (let i = 0; i < specialtiesNumber; i++)
-    specialtiesInputsDiv.innerHTML += `<h1>input</h1>`;
+    specialtiesInputsDiv.innerHTML += `
+    <input
+      class="p-1 m-1 text-black border-2 border-slate-600"
+      type="text"
+      name="Specialty"
+      placeholder="Specialty ${i + 1}"
+    />
+    `;
 }
 
 findAllMedics();

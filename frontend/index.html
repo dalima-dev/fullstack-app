@@ -86,6 +86,13 @@
             <input
               class="p-1 m-1 text-black border-2 border-slate-600"
               type="number"
+              name="phoneNumber"
+              id="phoneNumber"
+              placeholder="Phone Number"
+            />
+            <input
+              class="p-1 m-1 text-black border-2 border-slate-600"
+              type="number"
               name="cep"
               id="cep"
               placeholder="CEP"
@@ -102,7 +109,10 @@
               />
             </div>
 
-            <div id="specialtiesInputs"></div>
+            <div
+              id="specialtiesInputs"
+              class="flex flex-wrap justify-center"
+            ></div>
 
             <button onclick="createMedic()">Cadastrar</button>
           </div>
