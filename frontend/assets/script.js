@@ -31,22 +31,21 @@ async function findMedicById() {
   const response = await fetch(`${baseURL}/find-medics/${id}`);
 
   const medic = await response.json();
-
   const chosenMedicDiv = document.querySelector('#chosenMedic');
 
   chosenMedicDiv.innerHTML = `
   <div class="flex flex-row gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 cursor-pointer">
-          <img
-            src="./assets/foto.jpg"
-            alt="image not loaded"
-            class="w-20 md:w-auto rounded"
-          />
-          <div>
-            <p>ID: ${medic.id}</p>
-            <p>Nome:</p>
-            <p>${medic.name}</p>
-          </div>
-        </div>
+    <img
+        src="./assets/foto.jpg"
+        alt="image not loaded"
+        class="w-20 md:w-auto rounded"
+        />
+    <div>
+        <p>ID: ${medic.id}</p>
+        <p>Nome:</p>
+        <p>${medic.name}</p>
+    </div>
+  </div>
   `;
 }
 
