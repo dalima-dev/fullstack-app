@@ -13,7 +13,7 @@ async function findAllMedics() {
           <img
             src="./assets/foto.jpg"
             alt="image not loaded"
-            class="w-20 md:w-auto rounded"
+            class="w-16 md:w-auto rounded"
           />
           <div>
             <p>ID: ${item.id}</p>
@@ -34,12 +34,13 @@ async function findMedicById() {
   const chosenMedicDiv = document.querySelector('#chosenMedic');
 
   chosenMedicDiv.innerHTML = `
-  <div class="flex flex-col gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 cursor-pointer">
-    <img
+  <div class="flex flex-row items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
+      <img
         src="./assets/foto.jpg"
         alt="image not loaded"
-        class="w-20 md:w-auto rounded"
-        />
+        class=" w-20 md:w-auto rounded"
+      />
+    
     <div>
         <p>ID: ${medic.id}</p>
         <p>Nome:</p>
@@ -64,6 +65,7 @@ function addSpecialtiesInputs() {
       type="text"
       name="Specialty"
       placeholder="Specialty ${i + 1}"
+      required
     />
     `;
 }

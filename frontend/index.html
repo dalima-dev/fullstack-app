@@ -48,7 +48,7 @@
         <div id="chosenMedic"></div>
       </section>
 
-      <section class="max-w-xs sm:max-w-lg container mx-auto" id="overlay">
+      <section class="max-w-xs sm:max-w-lg container mx-auto my-4" id="overlay">
         <div
           class="flex flex-row justify-between items-center px-4 py-1 rounded-t-md bg-blue-500"
         >
@@ -68,6 +68,7 @@
               name="name"
               id="name"
               placeholder="Name"
+              required
             />
             <input
               class="p-1 m-1 text-black border-2 border-slate-600"
@@ -75,6 +76,7 @@
               name="crm"
               id="crm"
               placeholder="CRM"
+              required
             />
             <input
               class="p-1 m-1 text-black border-2 border-slate-600"
@@ -82,6 +84,7 @@
               name="landline"
               id="landline"
               placeholder="Landline"
+              required
             />
             <input
               class="p-1 m-1 text-black border-2 border-slate-600"
@@ -89,6 +92,7 @@
               name="phoneNumber"
               id="phoneNumber"
               placeholder="Phone Number"
+              required
             />
             <input
               class="p-1 m-1 text-black border-2 border-slate-600"
@@ -96,6 +100,7 @@
               name="cep"
               id="cep"
               placeholder="CEP"
+              required
             />
             <div class="py-1 flex justify-center gap-2">
               <label type="number">Number of specialties:</label>
@@ -106,6 +111,7 @@
                 name="specialtiesNumber"
                 min="2"
                 onchange="addSpecialtiesInputs()"
+                required
               />
             </div>
 
@@ -114,7 +120,14 @@
               class="flex flex-wrap justify-center"
             ></div>
 
-            <button onclick="createMedic()">Cadastrar</button>
+            <div class="flex justify-center">
+              <button
+                onclick="createMedic()"
+                class="bg-purple-700 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
+              >
+                SUBMIT
+              </button>
+            </div>
           </div>
         </div>
       </section>
