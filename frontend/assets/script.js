@@ -54,8 +54,10 @@ function closeModalRegister() {}
 
 function addSpecialtiesInputs() {
   const specialtiesNumber = document.querySelector('#specialtiesNumber').value;
-  const specialtiesInputsDiv = document.querySelector('#specialtiesInputs');
 
+  if (specialtiesNumber > 12) return; //Maximum number of 12 specialties. 
+
+  const specialtiesInputsDiv = document.querySelector('#specialtiesInputs');
   specialtiesInputsDiv.innerHTML = '';
 
   for (let i = 0; i < specialtiesNumber; i++)

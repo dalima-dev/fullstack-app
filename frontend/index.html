@@ -19,6 +19,7 @@
     >
       <h1 class="sm:text-3xl text-xl font-bold">Welcome to MedicBank!</h1>
       <button
+        onclick=""
         class="p-3 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition duration-300 ease-in-out hover:scale-110"
       >
         Register
@@ -48,9 +49,12 @@
         <div id="chosenMedic"></div>
       </section>
 
-      <section class="max-w-xs sm:max-w-lg container mx-auto my-4" id="overlay">
+      <section
+        class=" z-[9999] fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] max-w-xs sm:max-w-lg container mx-auto my-4 bg-blue-500 rounded-b-md rounded-t-md"
+        id="overlay"
+      >
         <div
-          class="flex flex-row justify-between items-center px-4 py-1 rounded-t-md bg-blue-500"
+          class="flex flex-row justify-between items-center px-4 py-1"
         >
           <h2 class="text-lg">Register medic:</h2>
           <a
@@ -60,7 +64,7 @@
           >
         </div>
 
-        <div class="p-2 bg-blue-500 rounded-b-md">
+        <div class="p-2  ">
           <div class="flex flex-col">
             <input
               class="p-1 m-1 text-black border-2 border-slate-600"
@@ -110,6 +114,7 @@
                 id="specialtiesNumber"
                 name="specialtiesNumber"
                 min="2"
+                max="12"
                 onchange="addSpecialtiesInputs()"
                 required
               />
