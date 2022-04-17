@@ -10,7 +10,7 @@ const baseURL = `http://${address}:3000/medic`;
     document.querySelector('#medicList').insertAdjacentHTML(
       'beforeend',
       `
-       <div class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
+       <div onclick="findMedicById(${item.id})" class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
           <img
             src="./assets/foto.jpg"
             alt="image not loaded"
@@ -27,10 +27,9 @@ const baseURL = `http://${address}:3000/medic`;
   });
 })();
 
-async function findMedicById() {
-  const idMedic = document.querySelector('#idMedic').value;
+async function findMedicById(idMedic) {
   const response = await fetch(
-    `${baseURL}/find-medics/${idMedic >= 1 ? idMedic : 1}`,
+    `${baseURL}/find-medics/${idMedic}`,
   );
   const medic = await response.json();
   const chosenMedicDiv = document.querySelector('#chosenMedic');
