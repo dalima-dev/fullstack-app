@@ -57,6 +57,14 @@ function closeModalRegister() {
   document.querySelector('#medicList').style.filter = 'blur(0)';
   document.querySelector('#searchById').style.filter = 'blur(0)';
   document.querySelector('h2').style.filter = 'blur(0)';
+
+  document.querySelector('#name').value = '';
+  document.querySelector('#crm').value = '';
+  document.querySelector('#landline').value = '';
+  document.querySelector('#phoneNumber').value = '';
+  document.querySelector('#cep').value = '';
+  document.querySelector('#specialtiesNumber').value = '';
+  document.querySelector('#specialtiesInputs').innerHTML = '';
 }
 
 function openModalRegister() {
@@ -79,9 +87,54 @@ function addSpecialtiesInputs() {
     <input
       class="p-1 m-1 text-black border-2 border-slate-600"
       type="text"
+      id="specialty${i + 1}"
       name="Specialty"
       placeholder="Specialty ${i + 1}"
-      required
     />
     `;
+}
+
+async function registerMedic() {
+  const name = document.querySelector('#name').value;
+  const CRM = document.querySelector('#crm').value;
+  const landline = document.querySelector('#landline').value;
+  const phoneNumber = document.querySelector('#phoneNumber').value;
+  const CEP = document.querySelector('#cep').value;
+  const specialtiesNumber = document.querySelector('#specialtiesNumber').value;
+  const specialties = [];
+
+  for (let i = 0; i < specialtiesNumber; i++)
+    specialties.push(document.querySelector(`#specialty${i + 1}`).value);
+
+  const medic = { name, CRM, landline, phoneNumber, CEP, specialties };
+
+  const response = await fetch(`${baseURL}/create`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    mode: 'cors',
+    body: JSON.stringify(medic),
+  });
+
+  const newMedic = await response.json();
+
+  document.querySelector('#medicList').insertAdjacentHTML(
+    'beforeend',
+    `
+  <div class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
+        <img
+          src="./assets/foto.jpg"
+          alt="image not loaded"
+          class="rounded"
+        />
+        <div>
+          <p>ID: ${newMedic.id}</p>
+          <p>Nome:</p>
+          <p>${newMedic.name}</p>
+        </div>
+  </div>
+  `,
+  );
+  closeModalRegister();
 }
