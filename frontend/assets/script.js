@@ -106,20 +106,6 @@ async function registerMedic() {
   for (let i = 0; i < specialtiesNumber; i++)
     specialties.push(document.querySelector(`#specialty${i + 1}`).value);
 
-  //Tests for invalid inputs.
-  if (
-    !name ||
-    !CRM ||
-    !landline ||
-    !phoneNumber ||
-    !CEP ||
-    !specialtiesNumber ||
-    specialties.length < 2
-  ) {
-    closeModalRegister();
-    return;
-  }
-
   const medic = { name, CRM, landline, phoneNumber, CEP, specialties };
 
   const response = await fetch(`${baseURL}/create`, {
@@ -133,9 +119,10 @@ async function registerMedic() {
 
   const newMedic = await response.json();
 
-  document.querySelector('#medicList').insertAdjacentHTML(
-    'beforeend',
-    `
+  if (response.status != 400) //This prevents of invalid data be shown on screen.
+    document.querySelector('#medicList').insertAdjacentHTML(
+      'beforeend',
+      `
   <div class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
         <img
           src="./assets/foto.jpg"
@@ -149,6 +136,6 @@ async function registerMedic() {
         </div>
   </div>
   `,
-  );
+    );
   closeModalRegister();
 }

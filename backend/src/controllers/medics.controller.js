@@ -26,15 +26,18 @@ const createMedicController = (req, res) => {
     !medic.landline ||
     !medic.phoneNumber ||
     !medic.CEP ||
-    medic.specialties.length <= 1 ||
+    !(
+      medic.specialties.length > 1 &&
+      medic.specialties.every((specialty) => specialty != '')
+    )
     //This checks if each specialty string is empty. If all strings of medic.specialties have length other than 0, then it passes the test.
-    medic.specialties.find((specialty) => specialty.length == 0)
     //Note that strings always have length > 0.
   )
     return res.status(400).send({ message: `You didn't fill all fields!` });
 
   const newMedic = medicsService.createMedicService(medic);
   res.send(newMedic);
+  console.log('medic created');
 };
 
 const updateMedicController = (req, res) => {
@@ -53,8 +56,10 @@ const updateMedicController = (req, res) => {
     !medic.landline ||
     !medic.phoneNumber ||
     !medic.CEP ||
-    medic.specialties.length <= 1 ||
-    medic.specialties.find((specialty) => specialty.length == 0)
+    !(
+      medic.specialties.length > 1 &&
+      medic.specialties.every((specialty) => specialty != '')
+    )
   )
     return res.status(400).send({ message: `You didn't fill all fields!` });
 
