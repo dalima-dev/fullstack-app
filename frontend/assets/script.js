@@ -106,6 +106,20 @@ async function registerMedic() {
   for (let i = 0; i < specialtiesNumber; i++)
     specialties.push(document.querySelector(`#specialty${i + 1}`).value);
 
+  //Tests for invalid inputs.
+  if (
+    !name ||
+    !CRM ||
+    !landline ||
+    !phoneNumber ||
+    !CEP ||
+    !specialtiesNumber ||
+    specialties.length < 2
+  ) {
+    closeModalRegister();
+    return;
+  }
+
   const medic = { name, CRM, landline, phoneNumber, CEP, specialties };
 
   const response = await fetch(`${baseURL}/create`, {
