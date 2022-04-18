@@ -36,7 +36,7 @@ async function findMedicById(idMedic) {
   });
 
   chosenMedicDiv.innerHTML = `
-  <div id="modalDetails" class="flex z-[9999] fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex-col justify-center gap-2 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
+  <div id="modalDetails" class="flex z-[9999] absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex-col justify-center gap-2 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
       <div class="flex justify-end"><a
         onclick="closeModalDetails()"
         class="mx-2 text-red-500 text-2xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
@@ -62,16 +62,25 @@ async function findMedicById(idMedic) {
 
 function openModalDetails() {
   document.querySelector('#medicList').style.filter = 'blur(24px)';
+  document.querySelector('header').style.filter = 'blur(24px)';
 }
 
 function closeModalDetails() {
   document.querySelector('#modalDetails').style.display = 'none';
   document.querySelector('#medicList').style.filter = 'blur(0)';
+  document.querySelector('header').style.filter = 'blur(0)';
+}
+
+function openModalRegister() {
+  document.querySelector('#overlay').style.display = 'block';
+  document.querySelector('#medicList').style.filter = 'blur(24px)';
+  document.querySelector('header').style.filter = 'blur(24px)';
 }
 
 function closeModalRegister() {
   document.querySelector('#overlay').style.display = 'none';
   document.querySelector('#medicList').style.filter = 'blur(0)';
+  document.querySelector('header').style.filter = 'blur(0)';
 
   document.querySelector('#name').value = '';
   document.querySelector('#crm').value = '';
@@ -86,11 +95,6 @@ function closeModalRegister() {
   document.querySelector('input[name=headNeckSurgery]').checked = false;
   document.querySelector('input[name=cardiacSurgery]').checked = false;
   document.querySelector('input[name=chestSurgery]').checked = false;
-}
-
-function openModalRegister() {
-  document.querySelector('#overlay').style.display = 'block';
-  document.querySelector('#medicList').style.filter = 'blur(24px)';
 }
 
 async function registerMedic() {
@@ -113,7 +117,9 @@ async function registerMedic() {
   ];
   for (let i = 0; i < inputsNames.length; i++)
     document.querySelector(`input[name=${inputsNames[i]}]`).checked &&
-      specialties.push(document.querySelector(`#${inputsNames[i]}`).value);
+      specialties.push(
+        document.querySelector(`input[name=${inputsNames[i]}]`).value,
+      );
   // (a && b) is equivalent to if(a){ b }
 
   const medic = { name, CRM, landline, phoneNumber, CEP, specialties };
