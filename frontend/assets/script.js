@@ -219,9 +219,7 @@ async function registerUpdateMedic(status, idMedic) {
   let endpoint = '';
   if (status == 'register') endpoint = baseURL + '/create';
   if (status == 'update') endpoint = baseURL + `/update/${idMedic}`;
-  console.log(endpoint);
   const method = status == 'register' ? 'post' : status == 'update' && `put`;
-  console.log(method);
 
   const response = await fetch(endpoint, {
     method: method,
