@@ -10,7 +10,7 @@ const baseURL = `http://${address}:3000/medic`;
     document.querySelector('#medicList').insertAdjacentHTML(
       'beforeend',
       `
-       <div onclick="findMedicById(${item.id}); openModalDetails();" class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
+       <div id="medic${item.id}" onclick="findMedicById(${item.id}); openModalDetails();" class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
           <img
             src="./assets/foto.jpg"
             alt="image not loaded"
@@ -232,24 +232,30 @@ async function registerUpdateMedic(status, idMedic) {
 
   const registeredUpdatedMedic = await response.json();
 
-  if (response.status != 400 && status == 'register')
-    //This if statement prevents of invalid data be shown on screen.
+  //This if statement prevents of invalid data be shown on screen.
+  if (response.status != 400) {
+    if (status == 'update')
+      document.querySelector(`#medic${registeredUpdatedMedic.id}`).outerHTML =
+        '';
+
     document.querySelector('#medicList').insertAdjacentHTML(
       'beforeend',
       `
-  <div onclick="findMedicById(${registeredUpdatedMedic.id}); openModalDetails();" class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
-        <img
-          src="./assets/foto.jpg"
-          alt="image not loaded"
-          class="rounded"
-        />
-        <div>
-          <p>${registeredUpdatedMedic.name}</p>
-          <p>CRM: ${registeredUpdatedMedic.CRM}</p>
-        </div>
-  </div>
-  `,
+      <div id="medic${registeredUpdatedMedic.id}" onclick="findMedicById(${registeredUpdatedMedic.id}); openModalDetails();" class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
+          <img
+            src="./assets/foto.jpg"
+            alt="image not loaded"
+            class="rounded"
+          />
+          <div>
+            <p>${registeredUpdatedMedic.name}</p>
+            <p>CRM: ${registeredUpdatedMedic.CRM}</p>
+          </div>
+    </div>
+    `,
     );
+  }
+
   closeModalRegisterUpdate();
 }
 
