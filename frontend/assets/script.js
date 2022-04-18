@@ -16,8 +16,8 @@ const baseURL = `http://${address}:3000/medic`;
             alt="image not loaded"
           />
           <div>
-            <p>ID: ${item.id}</p>
-            <p>Nome: ${item.name}</p>
+            <p>${item.name}</p>
+            <p>CRM: ${item.CRM}</p>
           </div>
         </div>
        `,
@@ -37,10 +37,13 @@ async function findMedicById(idMedic) {
 
   chosenMedicDiv.innerHTML = `
   <div id="modalDetails" class="flex z-[9999] absolute left-[50%] top-[60%] translate-x-[-50%] translate-y-[-50%] flex-col justify-center gap-2 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
-      <div class="flex justify-end"><a
+      <div class="flex flex-row items-center justify-between">
+      <p>${medic.name}</p>
+      <a
         onclick="closeModalDetails()"
         class="mx-2 text-red-500 text-2xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
-      > x</a></div>
+      >x</a>
+      </div>
       <img
         src="./assets/foto.jpg"
         alt="image not loaded"
@@ -48,7 +51,6 @@ async function findMedicById(idMedic) {
       />
     
     <div>
-        <p>Name: ${medic.name}</p>
         <p>CRM: ${medic.CRM}</p>
         <p>Landline: ${medic.landline}</p>
         <p>Phone Number: ${medic.phoneNumber}</p>
@@ -147,8 +149,8 @@ async function registerMedic() {
           class="rounded"
         />
         <div>
-          <p>ID: ${newMedic.id}</p>
-          <p>Nome: ${newMedic.name}</p>
+          <p>${newMedic.name}</p>
+          <p>CRM: ${newMedic.CRM}</p>
         </div>
   </div>
   `,
