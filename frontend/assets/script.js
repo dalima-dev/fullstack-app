@@ -36,7 +36,7 @@ async function findMedicById(idMedic) {
   });
 
   chosenMedicDiv.innerHTML = `
-  <div id="modalDetails" class="flex z-[9999] absolute left-[50%] top-[60%] translate-x-[-50%] translate-y-[-50%] flex-col justify-center gap-2 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
+  <div id="modalDetails" class="flex z-[9999] absolute left-[50%] top-[65%] translate-x-[-50%] translate-y-[-50%] flex-col justify-center gap-2 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
       <div class="flex flex-row items-center justify-between">
       <p>${medic.name}</p>
       <a
@@ -60,13 +60,13 @@ async function findMedicById(idMedic) {
     </div>
     <div class="flex justify-around">
       <button
-        onclick="updateMedic()"
+        onclick="openModalRegisterUpdate('update', ${medic.id})"
         class="m-2 p-3 rounded bg-blue-800 shadow-lg shadow-blue-800/80 transition duration-300 ease-in-out hover:scale-110"
       >
         UPDATE
       </button>
       <button
-        onclick="deleteMedic()"
+        onclick="deleteMedic(${medic.id})"
         class="m-2 p-3 rounded bg-red-500 shadow-lg shadow-red-500/80 transition duration-300 ease-in-out hover:scale-110"
       >
         DELETE
@@ -87,14 +87,47 @@ function closeModalDetails() {
   document.querySelector('header').style.filter = 'blur(0)';
 }
 
-function openModalRegister() {
+function openModalRegisterUpdate(status, idMedic) {
   document.querySelector('#overlay').style.display = 'block';
+  const registerTitle = document.querySelector('#registerTitle');
+  const updateTitle = document.querySelector('#updateTitle');
+  const registerUpdateButton = document.querySelector('#registerUpdateButton');
+
+  if (status == 'register') {
+    registerTitle.style.display = 'block';
+    updateTitle.style.display = 'none';
+    registerUpdateButton.innerHTML = `
+    <button
+      onclick="registerMedic()"
+      class="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
+    >
+      SUBMIT
+    </button>
+    `;
+  }
+
+  if (status == 'update') {
+    registerTitle.style.display = 'none';
+    updateTitle.style.display = 'block';
+    registerUpdateButton.innerHTML = `
+    <button
+      onclick="updateMedic(${idMedic})"
+      class="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
+    >
+      UPDATE
+    </button>
+    `;
+  }
+
+  document.querySelector('#modalDetails').style.display = 'none';
   document.querySelector('#medicList').style.filter = 'blur(24px)';
   document.querySelector('header').style.filter = 'blur(24px)';
 }
 
-function closeModalRegister() {
+function closeModalRegisterUpdate() {
   document.querySelector('#overlay').style.display = 'none';
+  document.querySelector('#registerTitle').style.display = 'none';
+  document.querySelector('#updateTitle').style.display = 'none';
   document.querySelector('#medicList').style.filter = 'blur(0)';
   document.querySelector('header').style.filter = 'blur(0)';
 
@@ -169,5 +202,13 @@ async function registerMedic() {
   </div>
   `,
     );
-  closeModalRegister();
+  closeModalRegisterUpdate();
+}
+
+async function deleteMedic(idMedic) {
+  closeModalDetails()
+}
+
+async function updateMedic(idMedic) {
+  closeModalRegisterUpdate();
 }

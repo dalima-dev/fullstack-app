@@ -19,7 +19,7 @@
     >
       <h1 class="sm:text-3xl text-xl font-bold">Welcome to MedicBank!</h1>
       <button
-        onclick="openModalRegister()"
+        onclick="openModalRegisterUpdate('register')"
         class="p-3 rounded bg-blue-800 shadow-lg shadow-blue-800/80 transition duration-300 ease-in-out hover:scale-110"
       >
         Register
@@ -34,9 +34,10 @@
         id="overlay"
       >
         <div class="flex flex-row justify-between items-center px-4 py-1">
-          <h2 class="text-lg">Register medic:</h2>
+          <h2 id="registerTitle" class="hidden text-lg">Register medic:</h2>
+          <h2 id="updateTitle" class="hidden text-lg">Update medic:</h2>
           <a
-            onclick="closeModalRegister()"
+            onclick="closeModalRegisterUpdate()"
             class="text-red-500 text-xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
             >x</a
           >
@@ -82,7 +83,7 @@
             <div class="py-1 flex flex-col gap-2">
               <p>Choose medic's specialties:</p>
               <div>
-                <input type="checkbox" name="alergology" value="Alergology"/>
+                <input type="checkbox" name="alergology" value="Alergology" />
                 <label id="alergology" for="alergology">Alergology</label>
               </div>
               <div>
@@ -90,49 +91,66 @@
                 <label id="angiology" for="angiology">Angiology</label>
               </div>
               <div>
-                <input type="checkbox" name="bucoMaxillo" value="Buco maxillo" />
+                <input
+                  type="checkbox"
+                  name="bucoMaxillo"
+                  value="Buco maxillo"
+                />
                 <label id="bucoMaxillo" for="bucoMaxillo">Buco maxillo</label>
               </div>
               <div>
-                <input type="checkbox" name="clinicCardiology" value="Clinic cardiology" />
+                <input
+                  type="checkbox"
+                  name="clinicCardiology"
+                  value="Clinic cardiology"
+                />
                 <label id="clinicCardiology" for="clinicCardiology">
-                Clinic cardiology</label
+                  Clinic cardiology</label
                 >
               </div>
               <div>
-                <input type="checkbox" name="childrensCardiology" value="Children's Cardiology" />
+                <input
+                  type="checkbox"
+                  name="childrensCardiology"
+                  value="Children's Cardiology"
+                />
                 <label id="childrensCardiology" for="childrensCardiology">
-                Children's Cardiology</label
+                  Children's Cardiology</label
                 >
               </div>
               <div>
-                <input type="checkbox" name="headNeckSurgery" value="Head and neck surgery" />
+                <input
+                  type="checkbox"
+                  name="headNeckSurgery"
+                  value="Head and neck surgery"
+                />
                 <label id="headNeckSurgery" for="headNeckSurgery">
-                Head and neck surgery</label
+                  Head and neck surgery</label
                 >
               </div>
               <div>
-                <input type="checkbox" name="cardiacSurgery" value="Cardiac surgery" />
+                <input
+                  type="checkbox"
+                  name="cardiacSurgery"
+                  value="Cardiac surgery"
+                />
                 <label id="cardiacSurgery" for="cardiacSurgery">
-                Cardiac surgery</label
+                  Cardiac surgery</label
                 >
               </div>
               <div>
-                <input type="checkbox" name="chestSurgery" value="Chest surgery" />
+                <input
+                  type="checkbox"
+                  name="chestSurgery"
+                  value="Chest surgery"
+                />
                 <label id="chestSurgery" for="chestSurgery"
                   >Chest surgery</label
                 >
               </div>
             </div>
 
-            <div class="flex justify-center">
-              <button
-                onclick="registerMedic()"
-                class="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
-              >
-                SUBMIT
-              </button>
-            </div>
+            <div id="registerUpdateButton" class="flex justify-center"></div>
           </div>
         </div>
       </section>
