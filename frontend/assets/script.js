@@ -160,7 +160,9 @@ async function openModalRegisterUpdate(status, idMedic) {
       document.querySelector('input[name=chestSurgery]').checked = true;
   }
 
-  document.querySelector('#modalDetails').style.display = 'none';
+  const modalDetails = document.querySelector('#modalDetails');
+  if (modalDetails) modalDetails.style.display = 'none';
+
   document.querySelector('#medicList').style.filter = 'blur(24px)';
   document.querySelector('header').style.filter = 'blur(24px)';
 }
@@ -214,10 +216,9 @@ async function registerUpdateMedic(status, idMedic) {
 
   const medic = { name, CRM, landline, phoneNumber, CEP, specialties };
 
-  const endpoint =
-    baseURL + status == 'register'
-      ? '/create'
-      : status == 'update' && `/update/${idMedic}`;
+  let endpoint = '';
+  if (status == 'register') endpoint = baseURL + '/create';
+  if (status == 'update') endpoint = baseURL + `/update/${idMedic}`;
   console.log(endpoint);
   const method = status == 'register' ? 'post' : status == 'update' && `put`;
   console.log(method);

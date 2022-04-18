@@ -49,15 +49,15 @@ const updateMedicController = (req, res) => {
 
   //Testing if all fields are filled.
   if (
-    !medic ||
-    !medic.name ||
-    !medic.CRM ||
-    !medic.landline ||
-    !medic.phoneNumber ||
-    !medic.CEP ||
+    !editedMedic ||
+    !editedMedic.name ||
+    !editedMedic.CRM ||
+    !editedMedic.landline ||
+    !editedMedic.phoneNumber ||
+    !editedMedic.CEP ||
     !(
-      medic.specialties.length > 1 &&
-      medic.specialties.every((specialty) => specialty != '')
+      editedMedic.specialties.length > 1 &&
+      editedMedic.specialties.every((specialty) => specialty != '')
     )
   )
     return res.status(400).send({ message: `You didn't fill all fields!` });
