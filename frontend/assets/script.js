@@ -51,12 +51,26 @@ async function findMedicById(idMedic) {
       />
     
     <div>
-        <p>CRM: ${medic.CRM}</p>
-        <p>Landline: ${medic.landline}</p>
-        <p>Phone Number: ${medic.phoneNumber}</p>
-        <p>CEP: ${medic.CEP}</p>
-        <p>Specialties:</p>
-        ${specialties}
+      <p>CRM: ${medic.CRM}</p>
+      <p>Landline: ${medic.landline}</p>
+      <p>Phone Number: ${medic.phoneNumber}</p>
+      <p>CEP: ${medic.CEP}</p>
+      <p>Specialties:</p>
+      ${specialties}
+    </div>
+    <div class="flex justify-around">
+      <button
+        onclick="updateMedic()"
+        class="m-2 p-3 rounded bg-blue-800 shadow-lg shadow-blue-800/80 transition duration-300 ease-in-out hover:scale-110"
+      >
+        UPDATE
+      </button>
+      <button
+        onclick="deleteMedic()"
+        class="m-2 p-3 rounded bg-red-500 shadow-lg shadow-red-500/80 transition duration-300 ease-in-out hover:scale-110"
+      >
+        DELETE
+      </button>
     </div>
   </div>
   `;
