@@ -36,7 +36,7 @@ async function findMedicById(idMedic) {
   });
 
   chosenMedicDiv.innerHTML = `
-  <div id="modalDetails" class="flex z-[9999] absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] flex-col justify-center gap-2 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
+  <div id="modalDetails" class="flex z-[9999] absolute left-[50%] top-[60%] translate-x-[-50%] translate-y-[-50%] flex-col justify-center gap-2 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80">
       <div class="flex justify-end"><a
         onclick="closeModalDetails()"
         class="mx-2 text-red-500 text-2xl transition-all ease-out duration-150 hover:scale-150 cursor-pointer"
