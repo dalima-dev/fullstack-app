@@ -87,7 +87,25 @@ function closeModalDetails() {
   document.querySelector('header').style.filter = 'blur(0)';
 }
 
+function clearInputs() {
+  document.querySelector('#name').value = '';
+  document.querySelector('#crm').value = '';
+  document.querySelector('#landline').value = '';
+  document.querySelector('#phoneNumber').value = '';
+  document.querySelector('#cep').value = '';
+  document.querySelector('input[name=alergology]').checked = false;
+  document.querySelector('input[name=angiology]').checked = false;
+  document.querySelector('input[name=bucoMaxillo]').checked = false;
+  document.querySelector('input[name=clinicCardiology]').checked = false;
+  document.querySelector('input[name=childrensCardiology]').checked = false;
+  document.querySelector('input[name=headNeckSurgery]').checked = false;
+  document.querySelector('input[name=cardiacSurgery]').checked = false;
+  document.querySelector('input[name=chestSurgery]').checked = false;
+}
+
 async function openModalRegisterUpdate(status, idMedic) {
+  clearInputs();
+
   document.querySelector('#overlay').style.display = 'block';
   const registerTitle = document.querySelector('#registerTitle');
   const updateTitle = document.querySelector('#updateTitle');
@@ -174,19 +192,7 @@ function closeModalRegisterUpdate() {
   document.querySelector('#medicList').style.filter = 'blur(0)';
   document.querySelector('header').style.filter = 'blur(0)';
 
-  document.querySelector('#name').value = '';
-  document.querySelector('#crm').value = '';
-  document.querySelector('#landline').value = '';
-  document.querySelector('#phoneNumber').value = '';
-  document.querySelector('#cep').value = '';
-  document.querySelector('input[name=alergology]').checked = false;
-  document.querySelector('input[name=angiology]').checked = false;
-  document.querySelector('input[name=bucoMaxillo]').checked = false;
-  document.querySelector('input[name=clinicCardiology]').checked = false;
-  document.querySelector('input[name=childrensCardiology]').checked = false;
-  document.querySelector('input[name=headNeckSurgery]').checked = false;
-  document.querySelector('input[name=cardiacSurgery]').checked = false;
-  document.querySelector('input[name=chestSurgery]').checked = false;
+  clearInputs();
 }
 
 async function registerUpdateMedic(status, idMedic) {
