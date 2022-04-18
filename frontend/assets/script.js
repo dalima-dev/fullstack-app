@@ -1,12 +1,12 @@
 const address = '192.168.0.6'; //You may change this to localhost or 127.0.0.1 if you're not using a wi-fi connection.
 const baseURL = `http://${address}:3000/medic`;
 
-(async function() {
+(async function () {
   //Here we push our medic list data into HTML.
   const response = await fetch(`${baseURL}/find-medics`);
   const medics = await response.json();
 
-  medics.forEach(function(item) {
+  medics.forEach(function (item) {
     document.querySelector('#medicList').insertAdjacentHTML(
       'beforeend',
       `
@@ -31,7 +31,7 @@ async function findMedicById(idMedic) {
   const chosenMedicDiv = document.querySelector('#chosenMedic');
 
   let specialties = '';
-  medic.specialties.forEach(function(specialty) {
+  medic.specialties.forEach(function (specialty) {
     specialties += `<p>${specialty}</p>`;
   });
 
@@ -78,14 +78,14 @@ function closeModalRegister() {
   document.querySelector('#landline').value = '';
   document.querySelector('#phoneNumber').value = '';
   document.querySelector('#cep').value = '';
-  document.querySelector('input[name=alergology]').checked = false
-  document.querySelector('input[name=angiology]').checked = false
-  document.querySelector('input[name=bucoMaxillo]').checked = false
-  document.querySelector('input[name=clinicCardiology]').checked = false
-  document.querySelector('input[name=childrensCardiology]').checked = false
-  document.querySelector('input[name=headNeckSurgery]').checked = false
-  document.querySelector('input[name=cardiacSurgery]').checked = false
-  document.querySelector('input[name=chestSurgery]').checked = false
+  document.querySelector('input[name=alergology]').checked = false;
+  document.querySelector('input[name=angiology]').checked = false;
+  document.querySelector('input[name=bucoMaxillo]').checked = false;
+  document.querySelector('input[name=clinicCardiology]').checked = false;
+  document.querySelector('input[name=childrensCardiology]').checked = false;
+  document.querySelector('input[name=headNeckSurgery]').checked = false;
+  document.querySelector('input[name=cardiacSurgery]').checked = false;
+  document.querySelector('input[name=chestSurgery]').checked = false;
 }
 
 function openModalRegister() {
@@ -93,31 +93,28 @@ function openModalRegister() {
   document.querySelector('#medicList').style.filter = 'blur(24px)';
 }
 
-  let specialties = [];
-  let alergologyChecked = false;
-  let angiologyChecked = false;
-  let bucoMaxilloChecked = false;
-  let clinicCardiologyChecked = false;
-  let childrensCardiologyChecked = false;
-  let headNeckSurgeryChecked = false;
-  let chestSurgeryChecked = false;
-
-  const alergology = document.querySelector('input[name=alergology]')
-  alergology.addEventListener('change', function(){
-   console.log(alergology.checked) 
-  })
-
-
-  //specialties.push(document.querySelector(`#specialty${i + 1}`).value);
-
-
 async function registerMedic() {
   const name = document.querySelector('#name').value;
   const CRM = document.querySelector('#crm').value;
   const landline = document.querySelector('#landline').value;
   const phoneNumber = document.querySelector('#phoneNumber').value;
   const CEP = document.querySelector('#cep').value;
-  
+  const specialties = [];
+
+  const inputsNames = [
+    'alergology',
+    'angiology',
+    'bucoMaxillo',
+    'clinicCardiology',
+    'childrensCardiology',
+    'headNeckSurgery',
+    'cardiacSurgery',
+    'chestSurgery',
+  ];
+  for (let i = 0; i < inputsNames.length; i++)
+    document.querySelector(`input[name=${inputsNames[i]}]`).checked &&
+      specialties.push(document.querySelector(`#${inputsNames[i]}`).value);
+  // (a && b) is equivalent to if(a){ b }
 
   const medic = { name, CRM, landline, phoneNumber, CEP, specialties };
 
