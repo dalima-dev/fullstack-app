@@ -60,13 +60,13 @@ async function findMedicById(idMedic) {
     </div>
     <div class="flex justify-around">
       <button
-        onclick="openModalRegisterUpdate('update', ${medic.id})"
+        onclick="openModalRegisterUpdate('update', ${idMedic})"
         class="m-2 p-3 rounded bg-blue-800 shadow-lg shadow-blue-800/80 transition duration-300 ease-in-out hover:scale-110"
       >
         UPDATE
       </button>
       <button
-        onclick="deleteMedic(${medic.id})"
+        onclick="deleteMedic(${idMedic})"
         class="m-2 p-3 rounded bg-red-500 shadow-lg shadow-red-500/80 transition duration-300 ease-in-out hover:scale-110"
       >
         DELETE
@@ -87,7 +87,7 @@ function closeModalDetails() {
   document.querySelector('header').style.filter = 'blur(0)';
 }
 
-function openModalRegisterUpdate(status, idMedic) {
+async function openModalRegisterUpdate(status, idMedic) {
   document.querySelector('#overlay').style.display = 'block';
   const registerTitle = document.querySelector('#registerTitle');
   const updateTitle = document.querySelector('#updateTitle');
@@ -117,6 +117,39 @@ function openModalRegisterUpdate(status, idMedic) {
       UPDATE
     </button>
     `;
+
+    const response = await fetch(`${baseURL}/find-medics/${idMedic}`);
+    const medic = await response.json();
+
+    document.querySelector('#name').value = medic.name;
+    document.querySelector('#crm').value = medic.CRM;
+    document.querySelector('#landline').value = medic.landline;
+    document.querySelector('#phoneNumber').value = medic.phoneNumber;
+    document.querySelector('#cep').value = medic.CEP;
+
+    if(medic.specialties.find(specialty => specialty == 'Alergology'))
+    document.querySelector('input[name=alergology]').checked = true;
+
+    if(medic.specialties.find(specialty => specialty == 'Angiology'))
+    document.querySelector('input[name=angiology]').checked = true;
+
+    if(medic.specialties.find(specialty => specialty == 'Buco maxillo'))
+    document.querySelector('input[name=bucoMaxillo]').checked = true;
+
+    if(medic.specialties.find(specialty => specialty == 'Clinic cardiology'))
+    document.querySelector('input[name=clinicCardiology]').checked = true;
+    
+    if(medic.specialties.find(specialty => specialty == `Children's cardiology`))
+    document.querySelector('input[name=childrensCardiology]').checked = true;
+
+    if(medic.specialties.find(specialty => specialty == 'Head and neck surgery'))
+    document.querySelector('input[name=headNeckSurgery]').checked = true;
+
+    if(medic.specialties.find(specialty => specialty == 'Cardiac surgery'))
+    document.querySelector('input[name=cardiacSurgery]').checked = true;
+
+    if(medic.specialties.find(specialty => specialty == 'Chest surgery'))
+    document.querySelector('input[name=chestSurgery]').checked = true;
   }
 
   document.querySelector('#modalDetails').style.display = 'none';
@@ -206,7 +239,7 @@ async function registerMedic() {
 }
 
 async function deleteMedic(idMedic) {
-  closeModalDetails()
+  closeModalDetails();
 }
 
 async function updateMedic(idMedic) {
