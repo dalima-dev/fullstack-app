@@ -98,7 +98,7 @@ async function openModalRegisterUpdate(status, idMedic) {
     updateTitle.style.display = 'none';
     registerUpdateButton.innerHTML = `
     <button
-      onclick="registerMedic()"
+      onclick="registerUpdateMedic('register')"
       class="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
     >
       SUBMIT
@@ -111,7 +111,7 @@ async function openModalRegisterUpdate(status, idMedic) {
     updateTitle.style.display = 'block';
     registerUpdateButton.innerHTML = `
     <button
-      onclick="updateMedic(${idMedic})"
+      onclick="registerUpdateMedic('update', ${idMedic})"
       class="bg-blue-800 shadow-lg shadow-blue-800/80 p-2 rounded transition-all ease-in-out duration-300 hover:scale-105"
     >
       UPDATE
@@ -127,29 +127,37 @@ async function openModalRegisterUpdate(status, idMedic) {
     document.querySelector('#phoneNumber').value = medic.phoneNumber;
     document.querySelector('#cep').value = medic.CEP;
 
-    if(medic.specialties.find(specialty => specialty == 'Alergology'))
-    document.querySelector('input[name=alergology]').checked = true;
+    if (medic.specialties.find((specialty) => specialty == 'Alergology'))
+      document.querySelector('input[name=alergology]').checked = true;
 
-    if(medic.specialties.find(specialty => specialty == 'Angiology'))
-    document.querySelector('input[name=angiology]').checked = true;
+    if (medic.specialties.find((specialty) => specialty == 'Angiology'))
+      document.querySelector('input[name=angiology]').checked = true;
 
-    if(medic.specialties.find(specialty => specialty == 'Buco maxillo'))
-    document.querySelector('input[name=bucoMaxillo]').checked = true;
+    if (medic.specialties.find((specialty) => specialty == 'Buco maxillo'))
+      document.querySelector('input[name=bucoMaxillo]').checked = true;
 
-    if(medic.specialties.find(specialty => specialty == 'Clinic cardiology'))
-    document.querySelector('input[name=clinicCardiology]').checked = true;
-    
-    if(medic.specialties.find(specialty => specialty == `Children's cardiology`))
-    document.querySelector('input[name=childrensCardiology]').checked = true;
+    if (medic.specialties.find((specialty) => specialty == 'Clinic cardiology'))
+      document.querySelector('input[name=clinicCardiology]').checked = true;
 
-    if(medic.specialties.find(specialty => specialty == 'Head and neck surgery'))
-    document.querySelector('input[name=headNeckSurgery]').checked = true;
+    if (
+      medic.specialties.find(
+        (specialty) => specialty == `Children's cardiology`,
+      )
+    )
+      document.querySelector('input[name=childrensCardiology]').checked = true;
 
-    if(medic.specialties.find(specialty => specialty == 'Cardiac surgery'))
-    document.querySelector('input[name=cardiacSurgery]').checked = true;
+    if (
+      medic.specialties.find(
+        (specialty) => specialty == 'Head and neck surgery',
+      )
+    )
+      document.querySelector('input[name=headNeckSurgery]').checked = true;
 
-    if(medic.specialties.find(specialty => specialty == 'Chest surgery'))
-    document.querySelector('input[name=chestSurgery]').checked = true;
+    if (medic.specialties.find((specialty) => specialty == 'Cardiac surgery'))
+      document.querySelector('input[name=cardiacSurgery]').checked = true;
+
+    if (medic.specialties.find((specialty) => specialty == 'Chest surgery'))
+      document.querySelector('input[name=chestSurgery]').checked = true;
   }
 
   document.querySelector('#modalDetails').style.display = 'none';
@@ -179,7 +187,7 @@ function closeModalRegisterUpdate() {
   document.querySelector('input[name=chestSurgery]').checked = false;
 }
 
-async function registerMedic() {
+async function registerUpdateMedic(status, idMedic) {
   const name = document.querySelector('#name').value;
   const CRM = document.querySelector('#crm').value;
   const landline = document.querySelector('#landline').value;
@@ -206,8 +214,16 @@ async function registerMedic() {
 
   const medic = { name, CRM, landline, phoneNumber, CEP, specialties };
 
-  const response = await fetch(`${baseURL}/create`, {
-    method: 'post',
+  const endpoint =
+    baseURL + status == 'register'
+      ? '/create'
+      : status == 'update' && `/update/${idMedic}`;
+  console.log(endpoint);
+  const method = status == 'register' ? 'post' : status == 'update' && `put`;
+  console.log(method);
+
+  const response = await fetch(endpoint, {
+    method: method,
     headers: {
       'Content-Type': 'application/json',
     },
@@ -215,22 +231,22 @@ async function registerMedic() {
     body: JSON.stringify(medic),
   });
 
-  const newMedic = await response.json();
+  const registeredUpdatedMedic = await response.json();
 
-  if (response.status != 400)
+  if (response.status != 400 && status == 'register')
     //This if statement prevents of invalid data be shown on screen.
     document.querySelector('#medicList').insertAdjacentHTML(
       'beforeend',
       `
-  <div onclick="findMedicById(${newMedic.id}); openModalDetails();" class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
+  <div onclick="findMedicById(${registeredUpdatedMedic.id}); openModalDetails();" class="flex flex-col items-center gap-4 p-2 rounded bg-blue-500 shadow-lg shadow-blue-500/80 transition delay-300 duration-300 ease-in-out hover:scale-105 cursor-pointer">
         <img
           src="./assets/foto.jpg"
           alt="image not loaded"
           class="rounded"
         />
         <div>
-          <p>${newMedic.name}</p>
-          <p>CRM: ${newMedic.CRM}</p>
+          <p>${registeredUpdatedMedic.name}</p>
+          <p>CRM: ${registeredUpdatedMedic.CRM}</p>
         </div>
   </div>
   `,
@@ -240,8 +256,4 @@ async function registerMedic() {
 
 async function deleteMedic(idMedic) {
   closeModalDetails();
-}
-
-async function updateMedic(idMedic) {
-  closeModalRegisterUpdate();
 }
