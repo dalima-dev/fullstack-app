@@ -266,5 +266,16 @@ async function registerUpdateMedic(status, idMedic) {
 }
 
 async function deleteMedic(idMedic) {
+  const response = await fetch(`${baseURL}/delete/${idMedic}`, {
+    method: 'delete',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    mode: 'cors',
+  });
+  const result = await response.json();
+  console.log(result.message);
+
+  document.querySelector(`#medic${idMedic}`).outerHTML = '';
   closeModalDetails();
 }
