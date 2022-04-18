@@ -37,7 +37,6 @@ const createMedicController = (req, res) => {
 
   const newMedic = medicsService.createMedicService(medic);
   res.send(newMedic);
-  console.log('medic created');
 };
 
 const updateMedicController = (req, res) => {
